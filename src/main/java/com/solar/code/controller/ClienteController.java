@@ -48,36 +48,11 @@ public class ClienteController {
     } //show es mostrar
 
     @PostMapping("/cliente")
-    public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result){ // osea nos manda de tipo json el cliente y luego requestbody es un puente que lo conbierte y inserta a la clase cliente
-        //line 51 @Valid a pezar que tiene validaciones en Entity no se validara , pero con esta anotacion si
-        Cliente clienteNew = null;
-        Map<String, Object> response = new HashMap<>();
-        if (result.hasErrors()){
-            /*List<String> errors = new ArrayList<>();
-            for(FieldError err: result.getFieldErrors()){
-                errors.add("El campo '" + err.getDefaultMessage() + "' " + err.getDefaultMessage());
-            }
-            response.put("errors",errors);
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+    public Cliente create( @RequestBody Cliente cliente){ // osea nos manda de tipo json el cliente y luego requestbody es un puente que lo conbierte y inserta a la clase cliente
 
-            Esto se aplicaba luego del jdk8
-             */
-            List<String> errors = result.getFieldErrors().stream().
-                    map(err ->  "El campo '" + err.getField() + "' " + err.getDefaultMessage())
-                    .collect(Collectors.toList());
-            response.put("errors",errors);
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST); //estado 400
-        }
-        try {
-            clienteNew = clienteService.save(cliente);
-        }catch (DataAccessException e){
-            response.put("mensaje", "Error al realizar insert en la base de datos");
-            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        response.put("mensaje", "El cliente ha sido creado con éxito : ");
-        response.put("cliente", clienteNew);
-        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+
+
+        return clienteService.save(cliente);
     }
 
     @PutMapping("/clientes/{id}")
