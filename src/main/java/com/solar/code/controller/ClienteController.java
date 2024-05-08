@@ -47,7 +47,7 @@ public class ClienteController {
         return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
     } //show es mostrar
 
-    @PostMapping("/cliente")
+    @PostMapping("/clieeeente")
     public Cliente create( @RequestBody Cliente cliente){ // osea nos manda de tipo json el cliente y luego requestbody es un puente que lo conbierte y inserta a la clase cliente
 
 
