@@ -12,6 +12,7 @@ import java.util.Date;
 @Entity
 @Table(name = "clientes")
 public class Cliente implements Serializable {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty(message = "no puede estar vacio")
