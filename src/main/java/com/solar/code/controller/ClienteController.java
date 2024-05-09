@@ -43,11 +43,11 @@ public class ClienteController {
         if (cliente == null){
             response.put("mensaje", "El cliente ID: ".concat(id.toString().concat(" no existe en la base de datos")));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-        } 
+        }
         return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
     } //show es mostrar
 
-    @PostMapping("/clieeeente")
+    @PostMapping("/clientes")
     public Cliente create( @RequestBody Cliente cliente){ // osea nos manda de tipo json el cliente y luego requestbody es un puente que lo conbierte y inserta a la clase cliente
 
 
@@ -89,7 +89,7 @@ public class ClienteController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/cliente/{id}")
+    @DeleteMapping("/clientes/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         Map<String, Object> response = new HashMap<>();
         try {
