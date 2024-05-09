@@ -13,7 +13,7 @@ import java.util.Date;
 @Table(name = "clientes")
 public class Cliente implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private Integer id;
     @NotEmpty(message = "no puede estar vacio")
     @Size(min=4,max = 25, message = "El tamaño tiene que estar entre 4 y 25") //tamaño para el campo
