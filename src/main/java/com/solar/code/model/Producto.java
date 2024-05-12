@@ -17,7 +17,6 @@ public class Producto {
   private String nombre;
   @Column
   private String marca;
-  @Column(length = 2000)
   private String descripcion;
   @Column(columnDefinition = "TEXT")
   private String imagen;
